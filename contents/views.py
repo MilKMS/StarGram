@@ -10,3 +10,14 @@ class HoneView(TemplateView):
     def dispatch(self, request, *args, **kwargs):
         return super(HoneView, self).dispatch(request, *args, **kwargs)
     template_name = 'home.html'
+
+# @login_required
+# def login(request):
+#     pass
+
+# class LoginView(View):
+#     @method_decorator(login_required)
+#     def dispatch():
+#         pass
+
+#     def get(self,)
