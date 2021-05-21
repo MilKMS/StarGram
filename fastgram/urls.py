@@ -36,6 +36,7 @@ urlpatterns = [
     path('register/', NonUserTemplateView.as_view(template_name='register.html'), name='register'),
     path('relation/', RelationView.as_view(), name='contents_relation'),
     path('apis/', include('apis.urls')),
+    path('video/', include('video.urls')),
 ]
 
 
