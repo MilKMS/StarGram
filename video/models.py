@@ -6,3 +6,10 @@ class Video(models.Model):
     video = models.FileField(upload_to="video/%y")
     def __str__(self):
         return self.caption
+
+class FilesAdmin(models.Model):
+    adminupload = models.FileField(upload_to='media')
+    title = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.title
