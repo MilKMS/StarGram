@@ -37,7 +37,7 @@ class RelationView(TemplateView):
         try:
             followers = FollowRelation.objects.get(follower=user).followee.all()
             context['followees'] = followers
-            context['followees_ids'] = listfollowers.values_list('id', flat=True)
+            context['followees_ids'] = list(followers.values_list('id', flat=True))
         except FollowRelation.DoesNotExist:
             pass
 

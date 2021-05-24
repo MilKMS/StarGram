@@ -12,10 +12,10 @@
       {{ request.user }}
     </span>
     <span class="navbar-text col-sm-3">
-      <a href="{% url 'contents_relation' %}">Favor Tags</a>
+      <a href="{% url 'contents_relation' %}">친구목록</a>
     </span>
     <span class="navbar-text col-sm-3">
-      <a href="javascript:void(0);" id="logout">Logout</a>
+      <a href="javascript:void(0);" id="logout">로그아웃</a>
     </span>
   </div>
 </nav>
@@ -29,7 +29,7 @@
   <br>
   <div id="formContainer">
     <form action="{% url 'apis_v1_content_create' %}" class="dropzone" id="uploader" style="background-color:whitesmoke;">
-        <div class="dz-message" data-dz-message><span>Drag and Drop or Click</span></div>
+        <div class="dz-message" data-dz-message><span>드래그 드랍하거나 클릭하여 이미지 선택</span></div>
         <div class="fallback">
             <input name="file" type="file" />
         </div>
@@ -40,12 +40,12 @@
     </div>
 
     <div style="text-align: right;">
-      <button type="button" class="btn btn-danger" id="upload">Commit</button>
+      <button type="button" class="btn btn-danger" id="upload">작성하기</button>
     </div>
   </div>
 
-{% for content in contents %}
-{% for image in content.image_set.all %}
+  {% for content in contents %}
+  {% for image in content.image_set.all %}
 <div class="content">
     <div class="post">
         <div class="text-center user-block">
@@ -64,7 +64,8 @@
 </div>
 </div>
 {% endfor %}
-<script>
+  <script>
+
 
 Dropzone.autoDiscover = false;
 
@@ -90,7 +91,7 @@ var dropZoneUploader = new Dropzone('form#uploader', {
      console.log(e)
     alert('에러가 발생했습니다. 다시 시도해주세요.');
   },
-  acceptedFiles: ".jpeg, .jpg, .png, .gif, .mp4",
+  acceptedFiles: ".jpeg,.jpg,.png,.gif",
   uploadMultiple: true,
 });
 
