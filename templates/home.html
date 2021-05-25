@@ -12,10 +12,10 @@
       {{ request.user }}
     </span>
     <span class="navbar-text col-sm-3">
-      <a href="{% url 'contents_relation' %}">친구목록</a>
+      <a href="{% url 'contents_relation' %}">Friend List</a>
     </span>
     <span class="navbar-text col-sm-3">
-      <a href="javascript:void(0);" id="logout">로그아웃</a>
+      <a href="javascript:void(0);" id="logout">Logout</a>
     </span>
   </div>
 </nav>
@@ -29,18 +29,18 @@
   <br>
   <div id="formContainer">
     <form action="{% url 'apis_v1_content_create' %}" class="dropzone" id="uploader" style="background-color:whitesmoke;">
-        <div class="dz-message" data-dz-message><span>드래그 드랍하거나 클릭하여 이미지 선택</span></div>
+        <div class="dz-message" data-dz-message><span>Drag and Drop or Click</span></div>
         <div class="fallback">
             <input name="file" type="file" />
         </div>
     </form>
     <div class="form-group">
-        <label>아래에 글을 입력해주세요.</label>
+        <label>Write Here.</label>
         <textarea class="form-control rounded-0" id="text" rows="3"></textarea>
     </div>
 
     <div style="text-align: right;">
-      <button type="button" class="btn btn-danger" id="upload">작성하기</button>
+      <button type="button" class="btn btn-danger" id="upload">Writing</button>
     </div>
   </div>
 
@@ -64,7 +64,8 @@
 </div>
 </div>
 {% endfor %}
-  <script>
+
+<script>
 
 
 Dropzone.autoDiscover = false;
@@ -89,7 +90,7 @@ var dropZoneUploader = new Dropzone('form#uploader', {
   },
   error: function(e) {
      console.log(e)
-    alert('에러가 발생했습니다. 다시 시도해주세요.');
+    alert('An error has occurred. Please re-enter');
   },
   acceptedFiles: ".jpeg,.jpg,.png,.gif",
   uploadMultiple: true,

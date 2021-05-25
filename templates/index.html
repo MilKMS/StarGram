@@ -16,11 +16,12 @@
     <div class="container">
         {% for x in video %}
             <h3 class="text-center mt-2 mb-2">{{ x.caption }}</h3>
-            <video class="embed-responsive embed-responsive-16by9" controls="controls">
+            <img class="img-info img-circle img-bordered-sm" src="{{ x.video.url }}" alt="User Image">
+
+            <!-- <video class="embed-responsive embed-responsive-16by9" controls="controls">
               <source src="{{ x.video.url }}" type="video/mp4" />
-            </video>
-              <!-- <h2>{{ post.title }}</h2>
-              <a href="{{ post.adminupload.url }}" download="{{ post.adminupload.url }}">Download</a> -->
+            </video> -->
+              <a href="{{ x.video.url }}" download="{{ x.video.url }}">Download</a>
         {% endfor %}
     </div>
     </hr>

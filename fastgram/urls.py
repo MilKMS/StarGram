@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, RedirectView
 from django.shortcuts import redirect
 from django.conf import settings
 from django.conf.urls.static import static
@@ -39,7 +39,8 @@ urlpatterns = [
     path('relation/', RelationView.as_view(), name='contents_relation'),
     path('apis/', include('apis.urls')),
     path('video/', include('video.urls')),
-    url(r'^download/(?P<path>.*)$', serve, {'document_root':settings.MEDIA_ROOT}),
+    url(r'^video/(?P<path>.*)$', serve, {'document_root':settings.MEDIA_ROOT}),
+    url(r'^favicon\.ico$',RedirectView.as_view(url='/static/images/favicon.ico')),
 ]
 
 

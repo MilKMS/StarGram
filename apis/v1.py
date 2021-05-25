@@ -76,7 +76,7 @@ class ContentCreateView(BaseView):
         text = request.POST.get('text', '').strip()
         content = Content.object.create(user=request.user, text=text)
         for idx, file in enumerate(request.FILES.values()):
-            image.objects.create(content=content, image=file, order=idx)
+            Image.objects.create(content=content, image=file, order=idx)
         return self.response({})
 
 
