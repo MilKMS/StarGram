@@ -12,9 +12,6 @@
       {{ request.user }}
     </span>
     <span class="navbar-text col-sm-3">
-      <a href="{% url 'contents_relation' %}">Friend List</a>
-    </span>
-    <span class="navbar-text col-sm-3">
       <a href="javascript:void(0);" id="logout">Logout</a>
     </span>
   </div>
@@ -27,7 +24,7 @@
   <script src="https://cdn.jsdelivr.net/npm/dropzone@5.5.1/dist/dropzone.min.js"></script>
 
   <br>
-  <div id="formContainer">
+  <!-- <div id="formContainer">
     <form action="{% url 'apis_v1_content_create' %}" class="dropzone" id="uploader" style="background-color:whitesmoke;">
         <div class="dz-message" data-dz-message><span>Drag and Drop or Click</span></div>
         <div class="fallback">
@@ -42,10 +39,10 @@
     <div style="text-align: right;">
       <button type="button" class="btn btn-danger" id="upload">Writing</button>
     </div>
-  </div>
+  </div> -->
 
-  {% for content in contents %}
-  {% for image in content.image_set.all %}
+{% for content in contents %}
+{% for image in content.image_set.all %}
 <div class="content">
     <div class="post">
         <div class="text-center user-block">
@@ -60,61 +57,58 @@
         </div>
         <p>{{ content.text }}</p>
         </div>
-   
-</div>
+    </div>
+  </div>
 </div>
 {% endfor %}
 
 <script>
 
 
-Dropzone.autoDiscover = false;
+// Dropzone.autoDiscover = false;
 
-var dropZoneUploader = new Dropzone('form#uploader', {
- init: function () {
-      var dropzone = this;
+// var dropZoneUploader = new Dropzone('form#uploader', {
+// init: function () {
+//       var dropzone = this;
+//     $('#upload').click(function () {
+//           dropZoneUploader.processQueue();
+//       });
+//     dropzone.on("sending", function(file, xhr, formData){
+//         formData.append("text", $('#text').val());
+//       });
+//   },
+//   parallelUploads: 10,
+//   autoProcessQueue: false,
+//   type: 'POST',
+//   success: function () {
+//     location.reload();
+//   },
+//   error: function(e) {
+//     console.log(e)
+//     alert('An error has occurred. Please re-enter');
+//   },
+//   acceptedFiles: ".jpeg,.jpg,.png,.gif",
+//   uploadMultiple: true,
+// });
 
-      $('#upload').click(function () {
-          dropZoneUploader.processQueue();
-      });
+// $(document).ready(function(){
 
-      dropzone.on("sending", function(file, xhr, formData){
-        formData.append("text", $('#text').val());
-      });
-  },
-  parallelUploads: 10,
-  autoProcessQueue: false,
-  type: 'POST',
-  success: function () {
-    location.reload();
-  },
-  error: function(e) {
-     console.log(e)
-    alert('An error has occurred. Please re-enter');
-  },
-  acceptedFiles: ".jpeg,.jpg,.png,.gif",
-  uploadMultiple: true,
-});
 
-$(document).ready(function(){
-/*
+// var myDropZone = Dropzone.forElement(".dropzone");
+// myDropZone.options.autoProcessQueue = false;
+// myDropZone.on("sending", function(file, xhr, data) {
 
-var myDropZone = Dropzone.forElement(".dropzone");
-myDropZone.options.autoProcessQueue = false;
-myDropZone.on("sending", function(file, xhr, data) {
+//             // First param is the variable name used server side
+//             // Second param is the value, you can add what you what
+//             // Here I added an input value
+//             data.append("your_variable", $('#your_input').val());
+//         });
 
-            // First param is the variable name used server side
-            // Second param is the value, you can add what you what
-            // Here I added an input value
-            data.append("your_variable", $('#your_input').val());
-        });
-*/
 
 $('#logout').click(function () {
-    $.get('/apis/v1/users/logout/', {}, function() {
+    $.get('apis/v1/users/logout/', {}, function() {
       location.reload();
     });
-});
 });
   </script>
 {% endblock %}

@@ -10,7 +10,7 @@ import os
 # Create your views here.
 def index(request):
     video=Video.objects.all()
-    return render(request, "index.html", {'video':video})
+    return render(request, "home.html", {'video':video})
 
 def download_home(request):
     context = {'file': FilesAdmin.objects.all()}
